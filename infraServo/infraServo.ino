@@ -17,8 +17,8 @@ int val;    // variable to read the value from the analog pin
  
 void setup() 
 { 
-  myservo.attach(3);  // attaches the servo on pin 3 to the servo object 
-  myservo.attach(5);  // attaches the servo on pin 5 to the servo object 
+  myservo1.attach(3);  // attaches the servo on pin 3 to the servo object 
+  myservo2.attach(5);  // attaches the servo on pin 5 to the servo object 
 } 
  
 void loop() 
@@ -27,5 +27,5 @@ void loop()
   val = map(val, 60, 700, 0, 180);     // scale it to use it with the servo (value between 0 and 180) 
   myservo1.write(val);                  // sets the servo position according to the scaled value 
   myservo2.write(val);                  // sets the servo position according to the scaled value 
-  delay(15); 
+//  delay(15); 
 } 
