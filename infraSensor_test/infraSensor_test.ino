@@ -4,5 +4,5 @@ void setup(){
 
 void loop() {
   int infraSensor = analogRead(A0);
-  Serial.print(infraSensor);
+  Serial.println(infraSensor);
 }
