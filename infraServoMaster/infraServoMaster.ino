@@ -35,11 +35,15 @@ void loop()
       for(tiltPos = 0; tiltPos <= 180; tiltPos += 5)
       {
         myServoTilt.write(tiltPos);
+        Serial.println(panPos);//theta
+        Serial.println(tiltPos);//phi
         delay(200);
       }
       for(tiltPos = 180; tiltPos >= 0; tiltPos -= 5)
       {
         myServoTilt.write(tiltPos);
+        Serial.println(panPos);//theta
+        Serial.println(tiltPos);//phi
         delay(200);
       }
     delay(200);
@@ -48,6 +52,8 @@ void loop()
   for(panPos = 180; panPos >= 0; panPos -= 1) // goes from 180 degrees to 0 degrees 
   {                                
     myServoPan.write(panPos);              // tell servo to go to position in variable 'pos' 
+    Serial.println(panPos);//theta
+    Serial.println(tiltPos);//phi
     delay(15);                       // waits 15ms for the servo to reach the position 
   } 
 } 
