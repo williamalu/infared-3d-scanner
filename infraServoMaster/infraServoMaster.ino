@@ -15,10 +15,11 @@
 Servo myServoTilt; // create servo object for tilt servo 
 Servo myServoPan;  // create servo object for pan servo
  
-int tiltPos = 0;   // variable to store the tilt servo position
+int tiltPos = 20;   // variable to store the tilt servo position
 int panPos = 0;    // variable to store the pan servo position
 
-long time;
+long prevTime = 0;
+long delayTime;
  
 void setup()
 { 
@@ -29,25 +30,24 @@ void setup()
  
 void loop()
 { 
+  myServoPan.write(0); //reset servos
+  myServoTilt.write(0);
+  
   for(panPos = 0; panPos <= 180; panPos += 5)
   {
     myServoPan.write(panPos);
-      for(tiltPos = 0; tiltPos <= 180; tiltPos += 5)
+    while(tiltPos <= 120)
+    {
+      if ((millis() - prevTime) > 200)
       {
+        Serial.println(tiltPos);
         myServoTilt.write(tiltPos);
-        delay(200);
+        prevTime = millis();
+        tiltPos += 5;
       }
-      for(tiltPos = 180; tiltPos >= 0; tiltPos -= 5)
-      {
-        myServoTilt.write(tiltPos);
-        delay(200);
-      }
-    delay(200);
+    }
+    tiltPos = 20;
+    myServoTilt.write(0);
   }
-  
-  for(panPos = 180; panPos >= 0; panPos -= 1) // goes from 180 degrees to 0 degrees 
-  {                                
-    myServoPan.write(panPos);              // tell servo to go to position in variable 'pos' 
-    delay(15);                       // waits 15ms for the servo to reach the position 
-  } 
-} 
+  myServoTilt.write(0); 
+}
