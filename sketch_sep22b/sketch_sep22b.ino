@@ -34,16 +34,16 @@ void tilt1(){
       {
         myServoTilt.write(tiltPos);
         caliDist = distanceConv();
-        Serial.print(tiltPos);Serial.print(" ");Serial.println(panPos);Serial.print(" ");Serial.println(caliDist);
-        delay(20);
+        Serial.print(tiltPos);Serial.print(" ");Serial.print(panPos);Serial.print(" ");Serial.println(caliDist);
+        delay(200);
       }
 }
 void tilt2(){
   for(tiltPos = 180; tiltPos >= 0; tiltPos -= 5)
       {
         myServoTilt.write(tiltPos);
-        Serial.print(tiltPos);Serial.print(" ");Serial.println(panPos);Serial.print(" ");Serial.println(caliDist);
-        delay(20);
+        Serial.print(tiltPos);Serial.print(" ");Serial.print(panPos);Serial.print(" ");Serial.println(caliDist);
+        delay(200);
       }
 }
 void pan(){
