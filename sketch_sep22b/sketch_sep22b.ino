@@ -3,20 +3,23 @@
 Servo myServoTilt; // create servo object for tilt servo 
 Servo myServoPan;  // create servo object for pan servo
  
-int tiltPos = 0;   // variable to store the tilt servo position
-int panPos = 0;    // variable to store the pan servo position
+int tiltPos = 20;   // variable to store the tilt servo position
+int panPos = 40;    // variable to store the pan servo position
 
-long time;
+long prevTime = 0;
+long delayTime;
+
 int val;
 int caliDist;
  
 void setup()
 { 
-  Serial.begin(9600);
+  delay(400);
+  Serial.begin(250000);
   myServoTilt.attach(3);
   myServoPan.attach(5);
-  myServoTilt.write(0);
-  myServoPan.write(0);
+  myServoTilt.write(tiltPos);
+  myServoPan.write(panPos);
 } 
  
 void loop(){
@@ -24,13 +27,13 @@ void loop(){
   pan();
   tilt2();
   pan();
-  if(panPos == 180){
+  if(panPos == 80){
     Serial.println("AWS");
   }
 }
 
 void tilt1(){
-  for(tiltPos = 0; tiltPos <= 180; tiltPos += 5)
+  for(tiltPos = 60; tiltPos <= 120; tiltPos += 2)
       {
         myServoTilt.write(tiltPos);
         caliDist = distanceConv();
@@ -39,7 +42,7 @@ void tilt1(){
       }
 }
 void tilt2(){
-  for(tiltPos = 180; tiltPos >= 0; tiltPos -= 5)
+  for(tiltPos = 120; tiltPos >= 60; tiltPos -= 2)
       {
         myServoTilt.write(tiltPos);
         Serial.print(tiltPos);Serial.print(" ");Serial.print(panPos);Serial.print(" ");Serial.println(caliDist);
@@ -47,7 +50,7 @@ void tilt2(){
       }
 }
 void pan(){
-  panPos += 5;
+  panPos += 2;
   myServoPan.write(panPos);
   delay(20);
 }
