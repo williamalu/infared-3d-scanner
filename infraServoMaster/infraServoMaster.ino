@@ -16,7 +16,7 @@ Servo myServoTilt; // create servo object for tilt servo
 Servo myServoPan;  // create servo object for pan servo
  
 int tiltPos = 20;   // variable to store the tilt servo position
-int panPos = 0;    // variable to store the pan servo position
+int panPos = 40;    // variable to store the pan servo position
 
 long prevTime = 0;
 long delayTime;
@@ -30,10 +30,10 @@ void setup()
  
 void loop()
 { 
-  myServoPan.write(0); //reset servos
-  myServoTilt.write(0);
+  myServoPan.write(40); //reset servos
+  myServoTilt.write(20);
   
-  for(panPos = 0; panPos <= 180; panPos += 5)
+  for(panPos = 40; panPos <= 120; panPos += 5)
   {
     myServoPan.write(panPos);
     while(tiltPos <= 120)
@@ -47,7 +47,6 @@ void loop()
       }
     }
     tiltPos = 20;
-    myServoTilt.write(0);
+    myServoTilt.write(20);
   }
-  myServoTilt.write(0); 
 }
