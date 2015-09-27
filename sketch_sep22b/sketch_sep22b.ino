@@ -3,8 +3,8 @@
 Servo myServoTilt; // create servo object for tilt servo 
 Servo myServoPan;  // create servo object for pan servo
  
-int tiltPos = 20;   // variable to store the tilt servo position
-int panPos = 40;    // variable to store the pan servo position
+int tiltPos = 60;   // variable to store the tilt servo position
+int panPos = 70;    // variable to store the pan servo position
 
 long prevTime = 0;
 long delayTime;
@@ -27,7 +27,7 @@ void loop(){
   pan();
   tilt2();
   pan();
-  if(panPos == 80){
+  if(panPos == 110){
     Serial.println("AWS");
   }
 }
