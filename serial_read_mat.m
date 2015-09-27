@@ -42,5 +42,5 @@ thetarad = theta.*(pi./180);
 phirad = phi.*(pi./180);
 x = dist.*cos(thetarad).*sin(phirad);
 y = dist.*sin(thetarad).*sin(phirad);
-z = dist.*cos(thetarad);
+z = dist.*cos(phirad);
 plot3(x,y,z,'ro');

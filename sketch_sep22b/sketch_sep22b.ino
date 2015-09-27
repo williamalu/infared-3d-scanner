@@ -48,7 +48,7 @@ void tilt2(){
         Serial.print(tiltPos);Serial.print(" ");Serial.print(panPos);Serial.print(" ");Serial.println(caliDist);
         delay(200);
       }
-}
+    }
 void pan(){
   panPos += 2;
   myServoPan.write(panPos);
@@ -57,12 +57,12 @@ void pan(){
 
 int distanceConv()
 {
-  int out[] = {60,55,50,45,40,35,30,25,20,15};//out is the cm
+  int out[] = {170,160,150,140,130,120,110,100,90,80,70,60,55,50,45,40,35,30,25,20,15};//out is the cm
   // note: the in array should have increasing values
-  int in[]  = {217,237,257,289,317,360,407,470,514,561};
+  int in[]  = {67,71,76,85,92,113,121,132,148,165,185,217,237,257,289,317,360,407,470,514,561};
   
   val = analogRead(A0);
-  return multiMap(val, in, out, 10);
+  return multiMap(val, in, out, 21);
 }
 
 int multiMap(int val, int* _in, int* _out, uint8_t size)
