@@ -1,6 +1,6 @@
 clear all;
 
-s = serial('COM8');
+s = serial('COM5');
 set(s, 'BaudRate', 250000);
 fopen(s);
 j = 0;
@@ -38,9 +38,13 @@ catch
     delete(s);
     clear s
 end
-thetarad = theta.*(pi./180);
-phirad = phi.*(pi./180);
-x = dist.*cos(thetarad).*sin(phirad);
-y = dist.*sin(thetarad).*sin(phirad);
-z = dist.*cos(phirad);
-plot3(x,y,z,'ro');
+
+w = 1;
+ for j = 1:71
+     for i = 1:61
+         A(i,j) = dist(w);
+         w = w + 1;
+     end
+ end
+ A = rot90(A,2);
+ pcolor(A);
