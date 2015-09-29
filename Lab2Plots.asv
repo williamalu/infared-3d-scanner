@@ -12,8 +12,8 @@
 % Error Calculation for POE Lab 2
 A = [21 26 31 36 41 46 51 56 63 68 73 79 84 89 97];
 B = [21 27 31 37 42 48 51 57 63 69 75 81 86 91 96];
-plot(A,B, 'c.', 'markersize', 20)
-axis([15 100 15 100])
+plot(A,B, 'bo-')
+axis([15 60 15 60])
 xlabel('Actual Distances (cm)');
 ylabel('Calculated Distances (cm)');
 title('Error Plot after Calibration');
